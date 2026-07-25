@@ -1,0 +1,60 @@
+# More commands: https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf
+# Nice tutorial: https://www.youtube.com/watch?v=bWH-nL7v5F4 
+disas <function_name> 
+#prints the assembly dump along with address
+
+b <function_name>
+#set the breakpoint at the first instruction of the specified function
+
+b *0x<address>
+#set the breakpoint at the specified address
+
+run
+#program will pause execution at the breakpoint
+
+next
+#execute next C instruction and pause
+
+stepi
+#execute next assembly instruction and pause
+
+continue
+#pause at next breakpoint
+
+p $RegisterName
+p &Variable
+#prints the address of the register/variable
+
+p (*(unsigned *)$RegisterName)
+p (*(unsigned *)&Variable)
+#prints the content of the register/variable
+
+q
+#quit from gdb
+
+
+lay src
+Lay split
+Hexdump [starting address] [how many addresses I want to see]
+ 
+strncpy(buffer, str, sizeof(buffer) - 1);
+buffer[sizeof(buffer) - 1] = '\0'; 
+
+
+> Hasan:
+lima32                  # Start/enter Ubuntu in the shared lab folder
+exit                    # Return to macOS
+limactl stop seed-x86   # Stop VM; files and installed tools remain
+
+> Hasan:
+# inside the VM
+mkdir -p ~/lab
+cp -r "/Users/hasanaranna/4-1/CSE 406/BufferOverflowJan2026" ~/lab/
+cd ~/lab/BufferOverflowJan2026
+
+sudo chown root stack
+sudo chmod 4755 stack
+
+> Hasan:
+# Getting files back to your Mac afterward (e.g. exploit scripts, writeups):
+cp -r ~/lab/BufferOverflowJan2026/* "/Users/hasanaranna/4-1/CSE 406/BufferOverflowJan2026/"
